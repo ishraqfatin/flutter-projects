@@ -19,7 +19,7 @@ class ExpenseItem extends StatelessWidget {
           children: [
             Text(
               expense.title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           const SizedBox(
             height: 4,
@@ -28,6 +28,7 @@ class ExpenseItem extends StatelessWidget {
             children: [
               Text(
                 '\$${expense.amount.toStringAsFixed(2)}',
+                  style: Theme.of(context).textTheme.bodyMedium,
               ),
               const Spacer(), //Takes all the space remaining
               Row(

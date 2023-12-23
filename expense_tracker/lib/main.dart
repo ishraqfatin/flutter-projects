@@ -11,7 +11,7 @@ var kColorScheme =
 
 var kDarkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
-  seedColor: const Color.fromARGB(255, 5, 99, 125),
+  seedColor: Color.fromARGB(97, 3, 84, 76),
 );
 
 void main() {
@@ -23,8 +23,8 @@ void main() {
         useMaterial3: true,
         colorScheme: kDarkColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
-          // backgroundColor: kDarkColorScheme.primaryContainer,
-          foregroundColor: kDarkColorScheme.onPrimaryContainer,
+            // backgroundColor: kDarkColorScheme.onPrimary,
+            // foregroundColor: kDarkColorScheme.onPrimaryContainer,
         ),
         cardTheme: const CardTheme().copyWith(
           color: kDarkColorScheme.secondaryContainer,
@@ -39,6 +39,26 @@ void main() {
             foregroundColor: kDarkColorScheme.onPrimaryContainer,
           ),
         ),
+        textTheme: ThemeData().textTheme.copyWith(
+              titleLarge: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kDarkColorScheme.onSecondaryContainer,
+                fontSize: 20,
+              ),
+              titleMedium: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kDarkColorScheme.onSecondaryContainer,
+                fontSize: 18,
+              ),
+              bodyMedium: TextStyle(
+                fontWeight: FontWeight.w500,
+                // fontStyle: FontStyle.italic,
+                color: kDarkColorScheme.secondary,
+                fontSize: 16,
+              ),
+              
+            
+            ),
       ),
 
       //LIGHT THEME
@@ -46,8 +66,8 @@ void main() {
         useMaterial3: true,
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
-          backgroundColor: kColorScheme.onPrimaryContainer,
-          foregroundColor: kColorScheme.primaryContainer,
+          backgroundColor: kColorScheme.onPrimary,
+          // foregroundColor: kColorScheme.primary,
         ),
         cardTheme: const CardTheme().copyWith(
           color: kColorScheme.secondaryContainer,
@@ -64,8 +84,21 @@ void main() {
         textTheme: ThemeData().textTheme.copyWith(
               titleLarge: TextStyle(
                 fontWeight: FontWeight.bold,
+                color: kColorScheme.primary,
+                fontSize: 20,
+              ),
+              titleMedium: TextStyle(
+                fontWeight: FontWeight.bold,
                 color: kColorScheme.onSecondaryContainer,
+                fontSize: 18,
+              ),
+              bodyMedium: TextStyle(
+                fontWeight: FontWeight.w500,
+                // fontStyle: FontStyle.italic,
+                color: kDarkColorScheme.onTertiary,
                 fontSize: 16,
+
+
               ),
             ),
       ),
