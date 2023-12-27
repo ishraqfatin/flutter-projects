@@ -35,8 +35,7 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
-
-  void _openOverlay() {
+  void _openOverlay(double width) {
     // final RenderBox renderBox = key.currentContext.findRenderObject();
     // final componentPosition = renderBox.localToGlobal(Offset.zero);
 
@@ -45,16 +44,20 @@ class _ExpensesState extends State<Expenses> {
 
     showModalBottomSheet(
         // enableDrag: true,
-        showDragHandle: true,
+        // showDragHandle: true,
+        useSafeArea: true, //stay away from device feature i.e. camera etc
         isScrollControlled: true,
         context: context,
         builder: (ctx) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
-            child: Center(
-              child: NewExpense(onAddExpense: _addExpense),
+          
+          return (width < 600
+              ? SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: Center(
+                    child: NewExpense(onAddExpense: _addExpense),
             ),
-          );
+                )
+              : NewExpense(onAddExpense: _addExpense));
         });
   }
 
@@ -91,6 +94,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     Widget mainContent = const Center(
       child: Text('No Expenses Found. Start Adding Some!'),
     );
@@ -105,26 +110,42 @@ class _ExpensesState extends State<Expenses> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: Text(
-            'Expense Tracker',
+          'Expense Tracker',
           style: Theme.of(context).textTheme.titleLarge,
-          ),
+        ),
         //   actions: [
         //     IconButton(
         //       onPressed: _openOverlay,
         //       icon: const Icon(Icons.add)),
         // ],
       ),
-      body: Column(
-
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(
+                  expenses: _registeredExpenses,
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(
+                  child: Chart(
+                    expenses: _registeredExpenses,
+                  ),
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _openOverlay,
+        onPressed: () {
+          _openOverlay(width);
+        },
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         child: const Icon(Icons.add),

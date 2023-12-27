@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-
+// import 'package:flutter/services.dart'; //exposes screen lock funcitonality
 import 'package:expense_tracker/widgets/expenses.dart';
 
 // Global variables starts with 'k' (convention)
-var kColorScheme =
-    ColorScheme.fromSeed(
+var kColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: const Color.fromARGB(255, 35, 71, 57),
 );
 
 var kDarkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
-  seedColor: Color.fromARGB(97, 3, 84, 76),
+  seedColor: const Color.fromARGB(97, 3, 84, 76),
 );
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // // Makes sure the orientation is locked before starting the app
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
   runApp(
     MaterialApp(
-      
       //DARK THEME
       darkTheme: ThemeData.dark().copyWith(
         useMaterial3: true,
@@ -25,7 +28,7 @@ void main() {
         appBarTheme: const AppBarTheme().copyWith(
             // backgroundColor: kDarkColorScheme.onPrimary,
             // foregroundColor: kDarkColorScheme.onPrimaryContainer,
-        ),
+            ),
         cardTheme: const CardTheme().copyWith(
           color: kDarkColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(
@@ -56,8 +59,6 @@ void main() {
                 color: kDarkColorScheme.secondary,
                 fontSize: 16,
               ),
-              
-            
             ),
       ),
 
@@ -97,13 +98,12 @@ void main() {
                 // fontStyle: FontStyle.italic,
                 color: kDarkColorScheme.onTertiary,
                 fontSize: 16,
-
-
               ),
             ),
       ),
-      // themeMode: ThemeMode.system,
+      // themeMode: ThemeMode.system, // system
       home: const Expenses(),
     ),
   );
+  // });
 }
