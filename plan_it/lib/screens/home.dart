@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:plan_it/screens/task_board.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var _screenWidth = MediaQuery.of(context).size;
+    var screscreenWidth = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 100,
+              height: 200,
             ),
             const Text(
               "Welcome to",
@@ -34,7 +35,7 @@ class Home extends StatelessWidget {
               height: 250,
             ),
             SizedBox(
-              width: _screenWidth.width * 0.55,
+              width: screscreenWidth.width * 0.55,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +60,13 @@ class Home extends StatelessWidget {
                       foregroundColor: Colors.white,
                       backgroundColor: const Color.fromARGB(255, 55, 55, 55),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const TaskBoard(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Let's get started",
                       style: TextStyle(
