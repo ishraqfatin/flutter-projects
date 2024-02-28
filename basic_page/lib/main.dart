@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:basic_page/screens/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 15, 14, 31)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Day/Night Switcher'),
+      home: const Home(),
+      // home: const MyHomePage(
+      //   title: 'Day/Night Switcher',
+      // ),
     );
   }
 }
