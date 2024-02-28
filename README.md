@@ -1,2 +1,2 @@
 # flutter-projects
-Repository for my flutter demo projects.
+Repository for my flutter projects.
